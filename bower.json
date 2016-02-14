@@ -1,0 +1,24 @@
+{
+  "name": "coder-forge-delicious-mixitup",
+  "description": "",
+  "main": "app/app.js",
+  "authors": [
+    "Daithi Coombes <webeire@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/coder-forge/delicious-filter-sort",
+  "moduleType": [
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mixitup": "^2.1.11"
+  }
+}

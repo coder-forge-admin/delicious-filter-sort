@@ -1,0 +1,14 @@
+{
+  "name": "coder-forge-delicious-mixitup",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./app/bin/www",
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "express": "~4.13.1",
+    "jade": "^1.11.0",
+    "nodemon": "^1.8.1"
+  }
+}
