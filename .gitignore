@@ -32,3 +32,6 @@ app/public/bower_components/
 
 # Optional REPL history
 .node_repl_history
+
+# config
+config.js
