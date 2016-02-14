@@ -1,4 +1,3 @@
 {
-  "client_id": "",
-  "client_secret": ""
+  "username": "ENTER YOUR USERNAME HERE"
 }
