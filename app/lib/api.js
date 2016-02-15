@@ -1,7 +1,8 @@
 "use strict"
 
-var config  = require('../../config')
-  ,http     = require('http')
+var config    = require('../../config')
+  ,http       = require('http')
+  ,sanitizer  = require('sanitizer')
 
 /**
  * Delicious API
@@ -26,14 +27,39 @@ API.prototype.tags = function APITags(req, res, next){
   // http callback.
   var callback = function(response){
 
-    var json = ''
+    var str = ''
 
+    // build response from delicious
     response.on('data', function(chunk){
-      json += chunk
+      str += chunk
     })
 
+    // send json response to client
     response.on('end', function(){
-      res.json(JSON.parse(json))
+
+      var jsonDel = JSON.parse(str),
+        json = []
+
+      /**
+       * @link http://stackoverflow.com/questions/7627000/javascript-convert-string-to-safe-class-name-for-css
+       */
+      function makeSafeForCSS(name) {
+        return name.replace(/[^a-z0-9]/g, function(s) {
+          var c = s.charCodeAt(0);
+          if (c == 32) return '-';
+          if (c >= 65 && c <= 90) return '_' + s.toLowerCase();
+          return '__' + ('000' + c.toString(16)).slice(-4);
+        });
+      }
+
+      jsonDel[0].t.forEach(function(tag){
+        json.push({
+          tag: tag,
+          class: makeSafeForCSS(tag)
+        })
+      })
+      console.log(json)
+      res.json(json)
     })
   }
 

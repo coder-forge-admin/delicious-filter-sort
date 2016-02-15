@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "nodemon ./app/bin/www",
+    "start": "nodemon ./app/app.js",
     "postinstall": "bower install"
   },
   "dependencies": {
     "express": "~4.13.1",
     "jade": "^1.11.0",
-    "nodemon": "^1.8.1"
+    "nodemon": "^1.8.1",
+    "sanitizer": "^0.1.3"
   }
 }
