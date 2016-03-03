@@ -1,5 +1,3 @@
-"use strict"
-
 var config    = require('../../config')
   ,http       = require('http')
   ,sanitizer  = require('sanitizer')
@@ -40,6 +38,7 @@ API.prototype.tags = function APITags(req, res, next){
       var jsonDel = JSON.parse(str),
         json = []
 
+      console.log(jsonDel)
       /**
        * @link http://stackoverflow.com/questions/7627000/javascript-convert-string-to-safe-class-name-for-css
        */
@@ -52,12 +51,14 @@ API.prototype.tags = function APITags(req, res, next){
         });
       }
 
-      jsonDel[0].t.forEach(function(tag){
-        json.push({
-          tag: tag,
-          class: makeSafeForCSS(tag)
+      if(jsonDel.length){
+        jsonDel[0].t.forEach(function(tag){
+          json.push({
+            tag: tag,
+            class: makeSafeForCSS(tag)
+          })
         })
-      })
+      }
       console.log(json)
       res.json(json)
     })
